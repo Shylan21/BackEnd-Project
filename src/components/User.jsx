@@ -52,6 +52,24 @@ function RegisterAndLogin() {
 		setLoginUser({ ...loginUser, [inputName]: inputValue })
 		console.log('Login value', inputName, inputValue)
 	}
+	function handleLogin(e) {
+		e.preventDefault()
+
+		fetch(`${apiUrl}/user/login`, {
+			method: 'POST',
+			body: JSON.stringify(loginUser),
+			headers: { 'Content-Type': 'application/json' },
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setLoginUser({ ...loginUser, token: data.token })
+				localStorage.setItem('token', data.token)
+			})
+			.catch((err) => {
+				console.error(err)
+			})
+	}
+
 	return (
 		<>
 			<form>
@@ -109,7 +127,7 @@ function RegisterAndLogin() {
 					type="submit"
 					name="submit"
 					value={'Submit'}
-					// onClick={handleLogin, loadNewPage}
+					onClick={handleLogin}
 				/>
 			</form>
 		</>
