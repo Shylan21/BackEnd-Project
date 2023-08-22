@@ -69,11 +69,17 @@ function RegisterAndLogin() {
 				console.error(err)
 			})
 	}
+	
+	// Load main page
+	function loadNewPage(e) {
+
+	}
 
 	return (
 		<>
+			<h1>Welcome!</h1>
 			<form>
-				<h1>Register</h1>
+				<h3>New user? Register now!</h3>
 				<label>
 					<input
 						className="email"
@@ -101,7 +107,10 @@ function RegisterAndLogin() {
 					value={'Submit'}
 					onClick={handleRegister}
 				/>
-				<h1>Login</h1>
+				<h3>Do you already have an account?
+					<br />
+					Login to start.
+				</h3>
 				<label>
 					<input
 						className="email"
@@ -128,6 +137,7 @@ function RegisterAndLogin() {
 					name="submit"
 					value={'Submit'}
 					onClick={handleLogin}
+					onSubmit={loadNewPage}
 				/>
 			</form>
 		</>
