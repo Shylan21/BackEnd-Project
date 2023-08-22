@@ -2,6 +2,7 @@ import '../client/App.css'
 import '../client/Forms.css'
 
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const apiUrl = 'http://localhost:4000'
 
@@ -52,6 +53,7 @@ function RegisterAndLogin() {
 		setLoginUser({ ...loginUser, [inputName]: inputValue })
 		console.log('Login value', inputName, inputValue)
 	}
+
 	function handleLogin(e) {
 		e.preventDefault()
 
@@ -69,79 +71,78 @@ function RegisterAndLogin() {
 				console.error(err)
 			})
 	}
-	
-	// Load main page
-	function loadNewPage(e) {
 
+	// Navigate to Main page
+	
+
+		return (
+			<>
+				<h1>Welcome!</h1>
+				<form>
+					<h3>New user? Register now!</h3>
+					<label>
+						<input
+							className="email"
+							type="text"
+							name="email"
+							placeholder="Email"
+							value={registerUser.email}
+							onChange={handleRegisterChange}
+						/>
+					</label>
+					<label>
+						<input
+							className="password"
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={registerUser.password}
+							onChange={handleRegisterChange}
+						/>
+					</label>
+					<input
+						className="button"
+						type="submit"
+						name="submit"
+						value={'Submit'}
+						onClick={handleRegister}
+					/>
+					<h3>
+						Do you already have an account?
+						<br />
+						Login to start.
+					</h3>
+					<label>
+						<input
+							className="email"
+							type="text"
+							name="email"
+							placeholder="Email"
+							value={loginUser.username}
+							onChange={handleLoginChange}
+						/>
+					</label>
+					<label>
+						<input
+							className="password"
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={loginUser.password}
+							onChange={handleLoginChange}
+						/>
+					</label>
+					<input
+						className="button"
+						type="submit"
+						name="submit"
+						value={'Submit'}
+						onClick={handleLogin}
+					/>
+				</form>
+			</>
+		)
 	}
 
-	return (
-		<>
-			<h1>Welcome!</h1>
-			<form>
-				<h3>New user? Register now!</h3>
-				<label>
-					<input
-						className="email"
-						type="text"
-						name="email"
-						placeholder="Email"
-						value={registerUser.email}
-						onChange={handleRegisterChange}
-					/>
-				</label>
-				<label>
-					<input
-						className="password"
-						type="password"
-						name="password"
-						placeholder="Password"
-						value={registerUser.password}
-						onChange={handleRegisterChange}
-					/>
-				</label>
-				<input
-					className="button"
-					type="submit"
-					name="submit"
-					value={'Submit'}
-					onClick={handleRegister}
-				/>
-				<h3>Do you already have an account?
-					<br />
-					Login to start.
-				</h3>
-				<label>
-					<input
-						className="email"
-						type="text"
-						name="email"
-						placeholder="Email"
-						value={loginUser.username}
-						onChange={handleLoginChange}
-					/>
-				</label>
-				<label>
-					<input
-						className="password"
-						type="password"
-						name="password"
-						placeholder="Password"
-						value={loginUser.password}
-						onChange={handleLoginChange}
-					/>
-				</label>
-				<input
-					className="button"
-					type="submit"
-					name="submit"
-					value={'Submit'}
-					onClick={handleLogin}
-					onSubmit={loadNewPage}
-				/>
-			</form>
-		</>
-	)
-}
 
 export default RegisterAndLogin
