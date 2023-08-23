@@ -4,31 +4,31 @@ import { useState, useEffect } from 'react'
 const apiUrl = 'http://localhost:4000'
 
 function Movie() {
-  const initialMovieInput = {
+	const initialMovieInput = {
 		title: '',
 		description: '',
 		runtimeMins: '',
 	}
 	const [movieList, setMovieList] = useState([])
-  const [movieInput, setMovieInput] = useState(initialMovieInput)
+	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
-  useEffect(() => {
-		const movieList = getMovies()
+	useEffect(() => {
+		getMovies()
 	}, [])
 
-function getMovies() {
-	fetch(`${apiUrl}/movie`, {
-		method: 'GET',
-		headers: { 'Content-Type': 'application/json' },
-	})
-		.then((res) => {
-			return res.json()
+	function getMovies() {
+		fetch(`${apiUrl}/movie`, {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
 		})
-		.then((data) => {
-			setMovieList(data.movie)
-		})
-}
-  
+			.then((res) => {
+				return res.json()
+			})
+			.then((data) => {
+				setMovieList(data.movie)
+			})
+	}
+
 	function handleMovieTitleChange(e) {
 		e.preventDefault()
 		const value = e.target.value
@@ -73,46 +73,45 @@ function getMovies() {
 	}
 
 	return (
-    <div className="Movie">
-     
-        <h1>Create movie</h1>
-				<label>
-					<input
-						type="text"
-						name="title"
-						placeholder="Title"
-						value={movieInput.title}
-						onChange={handleMovieTitleChange}
-					/>
-				</label>
-				<label>
-					<input
-						type="text"
-						name="description"
-						placeholder="Description"
-						value={movieInput.description}
-						onChange={handleMovieDescrChange}
-					/>
-				</label>
-				<label>
-					<input
-						type="text"
-						name="minutes"
-						placeholder="Minutes"
-						value={movieInput.runtimeMins}
-						onChange={handleMovieRuntimeChange}
-					/>
-				</label>
+		<div className="Movie">
+			<h1>Create movie</h1>
+			<label>
 				<input
-					type="submit"
-					name="submit"
-					value={'Submit'}
-					onClick={handleCreateMovie}
+					type="text"
+					name="title"
+					placeholder="Title"
+					value={movieInput.title}
+					onChange={handleMovieTitleChange}
 				/>
-			
+			</label>
+			<label>
+				<input
+					type="text"
+					name="description"
+					placeholder="Description"
+					value={movieInput.description}
+					onChange={handleMovieDescrChange}
+				/>
+			</label>
+			<label>
+				<input
+					type="text"
+					name="minutes"
+					placeholder="Minutes"
+					value={movieInput.runtimeMins}
+					onChange={handleMovieRuntimeChange}
+				/>
+			</label>
+			<input
+				type="submit"
+				name="submit"
+				value={'Submit'}
+				onClick={handleCreateMovie}
+			/>
+
 			<h1>Movie List</h1>
 			<ul>
-				{movieList.map((movie) => (
+				{movieList?.map((movie) => (
 					<li key={movie.id}>
 						<h3>{movie.title}</h3>
 						<p>Description: {movie.description}</p>
@@ -120,7 +119,7 @@ function getMovies() {
 					</li>
 				))}
 			</ul>
-      </div>
+		</div>
 	)
 }
 

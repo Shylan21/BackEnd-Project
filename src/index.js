@@ -12,7 +12,6 @@ root.render(
 		<BrowserRouter>
 			<App />
 			<RegisterAndLogin />
-			<Movie/>
 		</BrowserRouter>
 	</React.StrictMode>
 )

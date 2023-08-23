@@ -11,7 +11,6 @@ function App() {
 			{/* <RegisterAndLogin /> */}
 			<Routes>
 				<Route path="register" element={<RegisterAndLogin />} />
-				<Route path="movie" element={<Movie />} />
 			</Routes>
 		</>
 	)
