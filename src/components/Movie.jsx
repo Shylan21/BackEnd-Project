@@ -13,7 +13,7 @@ function Movie() {
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
 	useEffect(() => {
-		getMovies()
+		let movieList = getMovies()
 	}, [])
 
 	function getMovies() {
@@ -119,6 +119,7 @@ function Movie() {
 					</li>
 				))}
 			</ul>
+			
 		</div>
 	)
 }
