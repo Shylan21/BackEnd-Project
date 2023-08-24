@@ -14,9 +14,9 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
-	// useEffect(() => {
-	// 	const movieList = getMovies()
-	// }, [])
+	useEffect(() => {
+		const movieList = getMovies()
+	}, [])
 	// If I delete this, the error doens't show
 	// but I need this to keep displayed the new movies once the pge gets realoaded
 
@@ -29,7 +29,7 @@ function Movie() {
 				return res.json()
 			})
 			.then((data) => {
-				setMovieList(data.movie)
+				setMovieList(data.movies)
 			})
 	}
 
