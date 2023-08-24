@@ -1,4 +1,3 @@
-
 import '../client/Forms.css'
 import '../client/Movies.css'
 
@@ -78,7 +77,7 @@ function Movie() {
 	return (
 		<div className="Movie">
 			{/* {<a href="">Logout</a>} */}
-			<h1>Create movie</h1>
+			<h1>Add new movies</h1>
 			<label>
 				<input
 					className="input"
@@ -112,20 +111,34 @@ function Movie() {
 			<input
 				className="button"
 				type="submit"
-				name="submit"
-				value={'Submit'}
+				name="sAdd"
+				value={'Add Movie'}
 				onClick={handleCreateMovie}
 			/>
 
-			<h2>Movie List</h2>
+			<h2>Your List</h2>
 			<ul>
 				{movieList.map((movie) => (
 					<li key={movie.id}>
-						<h4>{movie.title}</h4>
-						<button className='edit'>Edit</button>
-						<button className='delete'>Delete</button>
-						<p>Genre: {movie.description}</p>
-						<p>Runtime: {movie.runtimeMins}</p>
+						<h4>Title</h4>
+						<p> {movie.title}</p>
+
+						{/* <button className="edit">Edit</button> */}
+						{/* Need to write logic for buttons with new fetch and onClick functions */}
+						{/* <button className="delete">Delete</button> */}
+
+						<h4>Genre</h4>
+						<p> {movie.description}</p>
+
+						<h4>Runtime</h4>
+						<p> {movie.runtimeMins}</p>
+
+						{/* <h4>Rating</h4>
+						 <p>{movie.rating}</p>
+						 <h4>Comment</h4>
+						<p>{movie.comment}</p> */}
+						{/* Alredy started, need to uncomment lines */}
+						
 					</li>
 				))}
 			</ul>

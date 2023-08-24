@@ -1,3 +1,8 @@
+
+h1, h2 {
+  text-align: left;
+}
+
 li {
   list-style: none;
 }
@@ -6,8 +11,10 @@ p {
   font-size: 0.83em;
 }
 
-h4 {
-  display: inline;
+.input {
+  margin: 15px;
+  width: 300px;
+  font-size: 20px;
 }
 
 .edit,
