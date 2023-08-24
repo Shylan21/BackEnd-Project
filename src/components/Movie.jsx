@@ -1,4 +1,6 @@
-import '../client/App.css'
+
+import '../client/Forms.css'
+import '../client/Movies.css'
 
 import { useState, useEffect } from 'react'
 
@@ -16,7 +18,7 @@ function Movie() {
 	useEffect(() => {
 		const movieList = getMovies()
 	}, [])
-	
+
 	function getMovies() {
 		fetch(`${apiUrl}/movie`, {
 			method: 'GET',
@@ -75,9 +77,11 @@ function Movie() {
 
 	return (
 		<div className="Movie">
+			{/* {<a href="">Logout</a>} */}
 			<h1>Create movie</h1>
 			<label>
 				<input
+					className='input'
 					type="text"
 					name="title"
 					placeholder="Title"
@@ -87,6 +91,7 @@ function Movie() {
 			</label>
 			<label>
 				<input
+					className='input'
 					type="text"
 					name="description"
 					placeholder="Genre"
@@ -96,6 +101,7 @@ function Movie() {
 			</label>
 			<label>
 				<input
+					className='input'
 					type="text"
 					name="minutes"
 					placeholder="Minutes"
@@ -104,22 +110,24 @@ function Movie() {
 				/>
 			</label>
 			<input
+				className='button'
 				type="submit"
 				name="submit"
 				value={'Submit'}
 				onClick={handleCreateMovie}
 			/>
 
-			<h1>Movie List</h1>
+			<h2>Movie List</h2>
 			<ul>
 				{movieList.map((movie) => (
 					<li key={movie.id}>
-						<h3>{movie.title}</h3>
+						<h4>{movie.title}</h4> 
 						<p>Genre: {movie.description}</p>
 						<p>Runtime: {movie.runtimeMins}</p>
 					</li>
 				))}
 			</ul>
+		
 		</div>
 	)
 }
