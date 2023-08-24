@@ -3,13 +3,13 @@ import '../client/Forms.css'
 import Movie from './Movie'
 
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const apiUrl = 'http://localhost:4000'
 
 // Starting point
 function RegisterAndLogin() {
-	// const navigate = useNavigate()
+	const navigate = useNavigate()
 
 	const initialUserInput = {
 		email: '',
@@ -58,6 +58,7 @@ function RegisterAndLogin() {
 	}
 
 	function handleLogin(e) {
+		e.preventDefault()
 		fetch(`${apiUrl}/user/login`, {
 			method: 'POST',
 			body: JSON.stringify(loginUser),
@@ -67,13 +68,11 @@ function RegisterAndLogin() {
 			.then((data) => {
 				setLoginUser({ ...loginUser, token: data.token })
 				localStorage.setItem('token', data.token)
+				navigate('/movie')
 			})
-			// .then(redirect('/movie'))
-
 			.catch((err) => {
 				console.error(err)
-			})()
-		// navigate('/movie')
+			})
 	}
 
 	return (
@@ -140,8 +139,10 @@ function RegisterAndLogin() {
 					value={'Submit'}
 					onClick={handleLogin}
 				/>
+				{/* <NavLink to="/movie">
+				
+				</NavLink> */}
 			</form>
-			{<NavLink path="/movie" element={<Movie />} />}
 		</>
 	)
 }

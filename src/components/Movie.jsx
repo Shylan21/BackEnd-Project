@@ -1,4 +1,6 @@
 import '../client/App.css'
+import '../client/Forms.css'
+
 import { useState, useEffect } from 'react'
 
 const apiUrl = 'http://localhost:4000'
@@ -119,7 +121,6 @@ function Movie() {
 					</li>
 				))}
 			</ul>
-			
 		</div>
 	)
 }

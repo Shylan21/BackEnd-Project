@@ -3,15 +3,17 @@ const prisma = require('../utils/prisma')
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.JWT_SECRET
 
+// GEt list of all movies
 const getMovies = async (req, res) => {
-	const movie = await prisma.movie.findMany({
+	const movies = await prisma.movie.findMany({
 		orderBy: {
 			id: 'asc',
 		},
 	})
-	return res.status(200).json({ movies: movie })
+	return res.status(200).json({ movies: movies })
 }
 
+// Create new movie
 const createMovie = async (req, res) => {
 	const { title, description, runtimeMins } = req.body
 
@@ -20,7 +22,7 @@ const createMovie = async (req, res) => {
 			error: 'Missing fields in request body',
 		})
 	}
-
+// Create new movie if there's not already the same one existing
 	try {
 		const token = req.headers.authorization.split(' ')[1]
 		const decodedToken = jwt.verify(token, secretKey)
