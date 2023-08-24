@@ -14,9 +14,11 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
-	useEffect(() => {
-		let movieList = getMovies()
-	}, [])
+	// useEffect(() => {
+	// 	const movieList = getMovies()
+	// }, [])
+	// If I delete this, the error doens't show
+	// but I need this to keep displayed the new movies once the pge gets realoaded
 
 	function getMovies() {
 		fetch(`${apiUrl}/movie`, {
@@ -90,7 +92,7 @@ function Movie() {
 				<input
 					type="text"
 					name="description"
-					placeholder="Description"
+					placeholder="Genre"
 					value={movieInput.description}
 					onChange={handleMovieDescrChange}
 				/>
@@ -113,10 +115,10 @@ function Movie() {
 
 			<h1>Movie List</h1>
 			<ul>
-				{movieList?.map((movie) => (
+				{movieList.map((movie) => (
 					<li key={movie.id}>
 						<h3>{movie.title}</h3>
-						<p>Description: {movie.description}</p>
+						<p>Genre: {movie.description}</p>
 						<p>Runtime: {movie.runtimeMins}</p>
 					</li>
 				))}

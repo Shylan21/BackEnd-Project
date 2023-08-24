@@ -1,6 +1,5 @@
 import '../client/App.css'
 import '../client/Forms.css'
-import Movie from './Movie'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
