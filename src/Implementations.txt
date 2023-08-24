@@ -1,0 +1,49 @@
+MAIN
+
+- REGISTER/LOGIN
+  - Divide Register and Login in different files ✅
+      - Add link to change between pages if account exists/not exists
+  - Add possibility to LogOut
+
+- MOVIES
+  - Open Movie List into another page at the Login ✅
+  - Modify CSS for Movie Form
+  - Can add ratings to movies
+  - Can add comments
+  - Can edit or delete a movie 
+
+
+Extra implementations
+- REGISTER/LOGIN
+  - Alert when email or passw are incorrect 
+  - Alert when email already exists
+
+- GENERAL
+  - Need to clear input after submission
+
+- MOVIES
+
+  - Clicking a movie will Link to another specific page for the selected movie
+  # i.e
+# const MovieList = ({ movies }) => {
+#   return (
+#     <>
+#       <h1>Movie List</h1>
+#       <ul>
+#         {movies.map(movie => {
+#           return (
+#             <li key={movie.id}>
+#               <Link to={`/movies/${movie.id}`}>
+#                 {movie.title}
+#                   </Link>
+#             </li>
+#            )
+#          })}
+#       </ul>
+#     </>
+#   )
+# }
+
+# export default MovieList '
+  
+
