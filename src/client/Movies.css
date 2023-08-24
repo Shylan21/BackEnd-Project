@@ -3,6 +3,18 @@ li {
 }
 
 p {
-font-size: 0.83em;
+  font-size: 0.83em;
 }
 
+h4 {
+  display: inline;
+}
+
+.edit,
+.delete {
+  margin: 0 0 0 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border-color: #EEF0EF;
+  background: #fff;
+}

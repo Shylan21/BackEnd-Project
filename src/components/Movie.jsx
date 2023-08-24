@@ -81,7 +81,7 @@ function Movie() {
 			<h1>Create movie</h1>
 			<label>
 				<input
-					className='input'
+					className="input"
 					type="text"
 					name="title"
 					placeholder="Title"
@@ -91,7 +91,7 @@ function Movie() {
 			</label>
 			<label>
 				<input
-					className='input'
+					className="input"
 					type="text"
 					name="description"
 					placeholder="Genre"
@@ -101,7 +101,7 @@ function Movie() {
 			</label>
 			<label>
 				<input
-					className='input'
+					className="input"
 					type="text"
 					name="minutes"
 					placeholder="Minutes"
@@ -110,7 +110,7 @@ function Movie() {
 				/>
 			</label>
 			<input
-				className='button'
+				className="button"
 				type="submit"
 				name="submit"
 				value={'Submit'}
@@ -121,13 +121,14 @@ function Movie() {
 			<ul>
 				{movieList.map((movie) => (
 					<li key={movie.id}>
-						<h4>{movie.title}</h4> 
+						<h4>{movie.title}</h4>
+						<button className='edit'>Edit</button>
+						<button className='delete'>Delete</button>
 						<p>Genre: {movie.description}</p>
 						<p>Runtime: {movie.runtimeMins}</p>
 					</li>
 				))}
 			</ul>
-		
 		</div>
 	)
 }
