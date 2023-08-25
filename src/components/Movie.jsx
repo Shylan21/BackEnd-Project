@@ -67,82 +67,105 @@ function Movie() {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				setMovieList([...movieList, response.movie])
+				setMovieList([...movieList], response.movies)
 			})
 			.catch((err) => {
 				console.error(err)
 			})
 	}
 
+	function deleteMovie(e, id) {
+		e.preventDefault()
+		const options = {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+		}
+
+		fetch(`${apiUrl}/movie/${id}`, options)
+			.then((res) => res.json())
+			.then((response) => {
+				const updatedMovieList = movieList.filter((movie) => movie.id !== id)
+				setMovieList(updatedMovieList)
+			})
+			.catch((err) => console.error(err))
+	}
+
 	return (
-		<div className="Movie">
-			{/* {<a href="">Logout</a>} */}
-			<h1>Add new movies</h1>
-			<label>
+		<>
+			<div className="Movie">
+				{/* {<a className="logout-link" href="">Logout</a>} */}
+				<h1>Add new movies</h1>
+				<label>
+					<input
+						className="input"
+						type="text"
+						name="title"
+						placeholder="Title"
+						value={movieInput.title}
+						onChange={handleMovieTitleChange}
+					/>
+				</label>
+				<label>
+					<input
+						className="input"
+						type="text"
+						name="description"
+						placeholder="Genre"
+						value={movieInput.description}
+						onChange={handleMovieDescrChange}
+					/>
+				</label>
+				<label>
+					<input
+						className="input"
+						type="text"
+						name="minutes"
+						placeholder="Minutes"
+						value={movieInput.runtimeMins}
+						onChange={handleMovieRuntimeChange}
+					/>
+				</label>
 				<input
-					className="input"
-					type="text"
-					name="title"
-					placeholder="Title"
-					value={movieInput.title}
-					onChange={handleMovieTitleChange}
+					className="button"
+					type="submit"
+					name="sAdd"
+					value={'Add Movie'}
+					onClick={handleCreateMovie}
 				/>
-			</label>
-			<label>
-				<input
-					className="input"
-					type="text"
-					name="description"
-					placeholder="Genre"
-					value={movieInput.description}
-					onChange={handleMovieDescrChange}
-				/>
-			</label>
-			<label>
-				<input
-					className="input"
-					type="text"
-					name="minutes"
-					placeholder="Minutes"
-					value={movieInput.runtimeMins}
-					onChange={handleMovieRuntimeChange}
-				/>
-			</label>
-			<input
-				className="button"
-				type="submit"
-				name="sAdd"
-				value={'Add Movie'}
-				onClick={handleCreateMovie}
-			/>
-
+			</div>
 			<h2>Your List</h2>
-			<ul>
-				{movieList.map((movie) => (
-					<li key={movie.id}>
-						<h4>Title</h4>
-						<p> {movie.title}</p>
+			<div className="container">
+				<ul>
+					{movieList.map((movie) => (
+						<li key={movie.id}>
+							<h4 className="title">Title</h4>
+							<p> {movie.title}</p>
 
-						{/* <button className="edit">Edit</button> */}
-						{/* Need to write logic for buttons with new fetch and onClick functions */}
-						{/* <button className="delete">Delete</button> */}
+							<h4 className="genre">Genre</h4>
+							<p> {movie.description}</p>
 
-						<h4>Genre</h4>
-						<p> {movie.description}</p>
+							<h4 className="min">Runtime</h4>
+							<p> {movie.runtimeMins}</p>
 
-						<h4>Runtime</h4>
-						<p> {movie.runtimeMins}</p>
+							{/* <h4 className="rating">Rating</h4>
+							<p>{movie.rating}</p>
 
-						{/* <h4>Rating</h4>
-						 <p>{movie.rating}</p>
-						 <h4>Comment</h4>
-						<p>{movie.comment}</p> */}
-						{/* Alredy started, need to uncomment lines */}
-						
-					</li>
-				))}
-			</ul>
-		</div>
+							<h4 className="comment">Comment</h4>
+							<p>{movie.comment}</p> */}
+
+							<button className="edit">Edit</button>
+
+							<button
+								className="delete"
+								onClick={(e) => deleteMovie(e, movie.id)}
+							>
+								Delete
+							</button>
+						</li>
+					))}
+				</ul>
+			</div>
+		</>
 	)
 }
 

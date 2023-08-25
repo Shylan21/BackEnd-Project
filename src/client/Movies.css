@@ -1,14 +1,37 @@
+/* * {
+  margin: 0;
+  padding: 0;
+}
 
-h1, h2 {
+h1,
+h2 {
   text-align: left;
+  margin: 50px 0 30px 30px;
 }
 
-li {
+.container {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 60px;
+  grid-template-areas:
+    "categories categories categories"
+    "li li li"
+    "p p p";
+} */
+
+ li {
   list-style: none;
+  grid-area: list;
 }
+
+/* .categories {
+  grid-area: categories;
+  display: inline-block;
+} */
 
 p {
   font-size: 0.83em;
+  grid-area: p;
 }
 
 .input {
@@ -20,8 +43,10 @@ p {
 .edit,
 .delete {
   margin: 0 0 0 20px;
+  padding: 3px;
   font-size: 16px;
   border-radius: 6px;
   border-color: #EEF0EF;
   background: #fff;
+  grid-area: buttons;
 }

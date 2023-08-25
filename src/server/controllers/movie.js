@@ -16,12 +16,13 @@ const getMovies = async (req, res) => {
 // Create new movie
 const createMovie = async (req, res) => {
 	const { title, genre, runtimeMins } = req.body
-	// const { rating, comment } = req.body
-	
-// Add in te if statement ||!rating ||!comment
+	// , rating, comment
+
+	// !rating ||
+	// !comment
 	if (!title || !genre || !runtimeMins) {
 		return res.status(400).json({
-			error: 'Missing fields in request body',
+			error: 'Movie already exists or cannot create movie. Try again.',
 		})
 	}
 	// Create new movie if there's not already the same one existing
@@ -52,7 +53,28 @@ const createMovie = async (req, res) => {
 	}
 }
 
+const deleteMovie = async (req, res) => {
+	const movieId = Number(req.params.id)
+	console.log('param', req.params)
+
+	try {
+		const deletedMovie = await prisma.movie.delete({
+			where: {
+				id: movieId,
+			},
+		})
+		return res.status(200).json({ movie: deletedMovie })
+	} catch (error) {
+		console.error(error)
+		return res
+			.status(500)
+			.json({ error: 'An error occurred while deleting the movie.' })
+	}
+}
+
 module.exports = {
 	getMovies,
 	createMovie,
+	deleteMovie,
+	// editMovie,
 }
