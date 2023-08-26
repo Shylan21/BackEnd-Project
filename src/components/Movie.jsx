@@ -1,5 +1,5 @@
 import '../client/Forms.css'
-import '../client/Movies.css'
+import '../client/Movie.css'
 
 import { useState, useEffect } from 'react'
 
@@ -57,7 +57,7 @@ function Movie() {
 	function handleMovieRatingChange(e) {
 		e.preventDefault()
 		const value = e.target.value
-		setMovieInput({ ...movieInput, rating: value })
+		setMovieInput({ ...movieInput, rating: Number(value) })
 		console.log('rating', e.target.value)
 	}
 
@@ -70,8 +70,9 @@ function Movie() {
 
 	function handleCreateMovie(e) {
 		e.preventDefault()
-
+		console.log('list', movieList)
 		const tokenItem = localStorage.getItem('token')
+		console.log('input', movieInput)
 
 		fetch(`${apiUrl}/movie`, {
 			method: 'POST',
@@ -87,6 +88,7 @@ function Movie() {
 			.then((response) => response.json())
 			.then((response) => {
 				setMovieList([...movieList, response.movie])
+				console.log('list', movieList)
 				setMovieInput(initialMovieInput)
 			})
 			.catch((err) => {

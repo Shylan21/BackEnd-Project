@@ -8,8 +8,8 @@ MAIN
 - MOVIES
   - Open Movie List into another page at the Login ✅
   - Modify CSS for Movie Form
-  - Can add ratings to movies
-  - Can add comments
+  - Can add ratings to movies ✅
+  - Can add comments ✅
   - Can edit a movie 
   - Can delete movie ✅
 
@@ -20,7 +20,7 @@ Extra implementations
   - Alert when email already exists
 
 - GENERAL
-  - Need to clear input after submission
+  - Need to clear input after submission 
 
 - MOVIES
 

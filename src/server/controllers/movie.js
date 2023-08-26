@@ -51,10 +51,10 @@ const createMovie = async (req, res) => {
 }
 
 // const editMovie = async (req, res) => {
-// 		const { title, genre, runtimeMins } = req.body
+// 		const { title, genre, runtimeMins, rating, comment } = req.body
 // 	const movieId = Number(req.params.id)
 
-// 		if (!title || !genre || !runtimeMins) {
+// 		if (!title || !genre || !runtimeMins || !rating || !comment ) {
 // 		return res.status(400).json({
 // 			error: 'Movie cannot be edited. Try again.',
 // 		})
