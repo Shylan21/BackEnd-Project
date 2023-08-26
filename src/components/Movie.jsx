@@ -182,9 +182,8 @@ function Movie() {
 				</label>
 				{/* Comment */}
 				<label>
-					<input
+					<textarea
 						className="input"
-						type="textarea"
 						name="comment"
 						placeholder="Comment"
 						value={movieInput.comment}
