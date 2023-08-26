@@ -8,7 +8,7 @@ const apiUrl = 'http://localhost:4000'
 function Movie() {
 	const initialMovieInput = {
 		title: '',
-		description: '',
+		genre: '',
 		runtimeMins: '',
 	}
 	const [movieList, setMovieList] = useState([])
@@ -37,10 +37,10 @@ function Movie() {
 		setMovieInput({ ...movieInput, title: value })
 	}
 
-	function handleMovieDescrChange(e) {
+	function handleMovieGenrChange(e) {
 		e.preventDefault()
 		const value = e.target.value
-		setMovieInput({ ...movieInput, description: value })
+		setMovieInput({ ...movieInput, genre: value })
 	}
 
 	function handleMovieRuntimeChange(e) {
@@ -67,7 +67,7 @@ function Movie() {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				setMovieList([...movieList], response.movies)
+				setMovieList([...movieList, response.movies])
 			})
 			.catch((err) => {
 				console.error(err)
@@ -109,10 +109,10 @@ function Movie() {
 					<input
 						className="input"
 						type="text"
-						name="description"
+						name="genre"
 						placeholder="Genre"
-						value={movieInput.description}
-						onChange={handleMovieDescrChange}
+						value={movieInput.genre}
+						onChange={handleMovieGenrChange}
 					/>
 				</label>
 				<label>
@@ -132,38 +132,35 @@ function Movie() {
 					value={'Add Movie'}
 					onClick={handleCreateMovie}
 				/>
-			</div>
-			<h2>Your List</h2>
-			<div className="container">
-				<ul>
-					{movieList.map((movie) => (
-						<li key={movie.id}>
-							<h4 className="title">Title</h4>
-							<p> {movie.title}</p>
 
-							<h4 className="genre">Genre</h4>
-							<p> {movie.description}</p>
-
-							<h4 className="min">Runtime</h4>
-							<p> {movie.runtimeMins}</p>
-
-							{/* <h4 className="rating">Rating</h4>
+				<h2>Your List</h2>
+				<div className="container">
+					<ul>
+						{movieList.map((movie) => (
+							<li key={movie.id}>
+								<h4 className="title">Title</h4>
+								<p> {movie.title}</p>
+								{console.log('title', movie.title)}
+								<h4 className="Genre">Genre</h4>
+								<p> {movie.genre}</p>
+								<h4 className="min">Runtime</h4>
+								<p> {movie.runtimeMins}</p>
+								{/* <h4 className="rating">Rating</h4>
 							<p>{movie.rating}</p>
 
 							<h4 className="comment">Comment</h4>
 							<p>{movie.comment}</p> */}
-
-							<button className="edit">Edit</button>
-
-							<button
-								className="delete"
-								onClick={(e) => deleteMovie(e, movie.id)}
-							>
-								Delete
-							</button>
-						</li>
-					))}
-				</ul>
+								<button className="edit">Edit</button>
+								<button
+									className="delete"
+									onClick={(e) => deleteMovie(e, movie.id)}
+								>
+									Delete
+								</button>
+							</li>
+						))}
+					</ul>
+				</div>
 			</div>
 		</>
 	)
