@@ -22,8 +22,8 @@ model Movie {
   title         String      @unique
   genre         String
   runtimeMins   Int
-  // rating        Int
-  // comment       String
+  rating        Int
+  comment       String
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 }

@@ -15,12 +15,9 @@ const getMovies = async (req, res) => {
 
 // Create new movie
 const createMovie = async (req, res) => {
-	const { title, genre, runtimeMins } = req.body
-	// , rating, comment
+	const { title, genre, runtimeMins, rating, comment } = req.body
 
-	// !rating ||
-	// !comment
-	if (!title || !genre || !runtimeMins) {
+	if (!title || !genre || !runtimeMins || !rating || !comment) {
 		return res.status(400).json({
 			error: 'Movie already exists or cannot create movie. Try again.',
 		})
@@ -36,8 +33,8 @@ const createMovie = async (req, res) => {
 					title,
 					genre,
 					runtimeMins,
-					// rating,
-					// comment,
+					rating,
+					comment,
 				},
 			})
 			res.status(200).json({ movie: createdMovie })
@@ -53,9 +50,20 @@ const createMovie = async (req, res) => {
 	}
 }
 
+// const editMovie = async (req, res) => {
+// 		const { title, genre, runtimeMins } = req.body
+// 	const movieId = Number(req.params.id)
+
+// 		if (!title || !genre || !runtimeMins) {
+// 		return res.status(400).json({
+// 			error: 'Movie cannot be edited. Try again.',
+// 		})
+// 	}
+
+// }
+
 const deleteMovie = async (req, res) => {
 	const movieId = Number(req.params.id)
-	console.log('param', req.params)
 
 	try {
 		const deletedMovie = await prisma.movie.delete({

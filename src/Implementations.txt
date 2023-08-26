@@ -10,7 +10,8 @@ MAIN
   - Modify CSS for Movie Form
   - Can add ratings to movies
   - Can add comments
-  - Can edit or delete a movie 
+  - Can edit a movie 
+  - Can delete movie ✅
 
 
 Extra implementations
