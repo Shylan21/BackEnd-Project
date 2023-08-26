@@ -67,7 +67,7 @@ function Movie() {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				setMovieList([...movieList, response.movies])
+				setMovieList([...movieList, response.movie])
 			})
 			.catch((err) => {
 				console.error(err)
@@ -140,16 +140,18 @@ function Movie() {
 							<li key={movie.id}>
 								<h4 className="title">Title</h4>
 								<p> {movie.title}</p>
-								{console.log('title', movie.title)}
+
 								<h4 className="Genre">Genre</h4>
 								<p> {movie.genre}</p>
+
 								<h4 className="min">Runtime</h4>
 								<p> {movie.runtimeMins}</p>
-								{/* <h4 className="rating">Rating</h4>
-							<p>{movie.rating}</p>
 
-							<h4 className="comment">Comment</h4>
-							<p>{movie.comment}</p> */}
+								{/* <h4 className="rating">Rating</h4>
+								<p>{movie.rating}</p>
+
+								<h4 className="comment">Comment</h4>
+								<p>{movie.comment}</p> */}
 								<button className="edit">Edit</button>
 								<button
 									className="delete"
