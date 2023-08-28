@@ -16,6 +16,13 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
+	// const [editingMovieId, setEditingMovieId] = useState(null)
+	// const [editedTitle, setEditedTitle] = useState('')
+	// const [editedGenre, setEditedGenre] = useState('')
+	// const [editedRuntime, setEditedRuntime] = useState('')
+	// const [editedRating, setEditedRating] = useState('')
+	// const [editedComment, setEditedComment] = useState('')
+
 	useEffect(() => {
 		const movieList = getMovies()
 	}, [])
@@ -96,19 +103,42 @@ function Movie() {
 			})
 	}
 
-	function editMovie(e, id) {
+	function editMovie(e, id, updatedMovie) {
 		e.preventDefault()
 
 		const option = {
 			methid: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(updatedMovie),
 		}
-		// 	fetch(`${apiUrl}/movie/${id}`, option)
-		// 		.then((res) => res.json())
-		// 		.then((res) => {
-		// 		// 	const updatedMovie =
-		// 		// })
+
+		fetch(`${apiUrl}/movie/${id}`, option)
+			.then((res) => res.json())
+			.then((editedMovie) => {
+				const updatedMovie = movieList.map((movie) =>
+					movie.id === id ? editedMovie : movie
+				)
+				setMovieList(updatedMovie)
+			})
+			.catch((error) => {
+				console.error('Error editing movie:', error)
+			})
 	}
+
+	// const saveEditedMovie = (e, id) => {
+	// 	e.preventDefault()
+
+	// 	const updatedMovieData = {
+	// 		title: editedTitle,
+	// 		genre: editedGenre,
+	// 		runtimeMins: editedRuntime,
+	// 		rating: editedRating,
+	// 		comment: editedComment,
+	// 	}
+
+	// 	editMovie(e, id, updatedMovieData)
+	// 	setEditingMovieId(null) // Reset editing state
+	// }
 
 	function deleteMovie(e, id) {
 		e.preventDefault()
@@ -167,8 +197,9 @@ function Movie() {
 				</label>
 				{/* Rating */}
 				<label>
-					Rating
+					<b>Rating</b>
 					<select
+						className="rating"
 						name="rating"
 						value={movieInput.rating}
 						onChange={handleMovieRatingChange}
@@ -180,19 +211,22 @@ function Movie() {
 						<option name="rating">5</option>
 					</select>
 				</label>
+				<br />
 				{/* Comment */}
 				<label>
 					<textarea
-						className="input"
+						rows="4"
+						cols="50"
+						className="input textarea"
 						name="comment"
-						placeholder="Comment"
+						placeholder="Write a comment..."
 						value={movieInput.comment}
 						onChange={handleMovieCommentChange}
 					/>
 				</label>
 				{/* Add Movie */}
 				<input
-					className="button"
+					className="add"
 					type="submit"
 					name="Add"
 					value={'Add Movie'}
@@ -201,13 +235,13 @@ function Movie() {
 				{/* Rendering on screen */}
 				<h2>Your List</h2>
 				<div className="container">
-					<ul>
+					
 						{movieList.map((movie) => (
-							<li key={movie.id}>
+							<div key={movie.id}>
 								<h4 className="title">Title</h4>
 								<p> {movie.title}</p>
-
-								<h4 className="Genre">Genre</h4>
+							
+								<h4 className="genre">Genre</h4>
 								<p> {movie.genre}</p>
 
 								<h4 className="min">Runtime</h4>
@@ -219,22 +253,28 @@ function Movie() {
 								<h4 className="comment">Comment</h4>
 								<p>{movie.comment}</p>
 
+
 								{/* Buttons */}
+
 								<button
 									className="edit"
 									onClick={(e) => editMovie(e, movie.id)}
 								>
 									Edit
 								</button>
-								<button
-									className="delete"
-									onClick={(e) => deleteMovie(e, movie.id)}
-								>
+
+							<button
+								className="delete"
+								onClick={(e) => deleteMovie(e, movie.id)}
+							>
 									Delete
 								</button>
-							</li>
+
+							</div>	 
+						
 						))}
-					</ul>
+						
+				
 				</div>
 			</div>
 		</>

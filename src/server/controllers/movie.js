@@ -50,17 +50,37 @@ const createMovie = async (req, res) => {
 	}
 }
 
-// const editMovie = async (req, res) => {
-// 		const { title, genre, runtimeMins, rating, comment } = req.body
-// 	const movieId = Number(req.params.id)
+const editMovie = async (req, res) => {
+	const { title, genre, runtimeMins, rating, comment } = req.body
+	const movieId = Number(req.params.id)
 
-// 		if (!title || !genre || !runtimeMins || !rating || !comment ) {
-// 		return res.status(400).json({
-// 			error: 'Movie cannot be edited. Try again.',
-// 		})
-// 	}
-
-// }
+	if (!title || !genre || !runtimeMins || !rating || !comment) {
+		return res.status(400).json({
+			error: 'Movie cannot be edited. Try again.',
+		})
+	}
+	try {
+		const editMovie = await prisma.movie.update({
+			data: {
+				movieId,
+				title,
+				genre,
+				runtimeMins,
+				rating,
+				comment,
+			},
+			include: {
+				movie: true,
+			},
+		})
+		return res.status(200).json({ movie: editMovie })
+	} catch (error) {
+		console.error(error)
+		return res
+			.status(500)
+			.json({ error: 'An error occurred while editing the movie.' })
+	}
+}
 
 const deleteMovie = async (req, res) => {
 	const movieId = Number(req.params.id)
@@ -84,5 +104,5 @@ module.exports = {
 	getMovies,
 	createMovie,
 	deleteMovie,
-	// editMovie,
+	editMovie,
 }

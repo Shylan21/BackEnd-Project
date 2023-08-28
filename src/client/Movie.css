@@ -1,52 +1,87 @@
-/* * {
+/* General */
+* {
   margin: 0;
   padding: 0;
 }
 
+/* Head */
 h1,
 h2 {
   text-align: left;
   margin: 50px 0 30px 30px;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: 60px;
-  grid-template-areas:
-    "categories categories categories"
-    "li li li"
-    "p p p";
-} */
-
- li {
-  list-style: none;
-  grid-area: list;
+.input {
+  margin: 15px;
+  width: 300px;
+  font-size: 20px;
+  padding: 5px;
 }
 
-/* .categories {
-  grid-area: categories;
-  display: inline-block;
-} */
+
+
+.textarea {
+  resize: none;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.rating {
+  margin: 15px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 60px;
+  grid-template-areas:
+    "h4 h4 h4"
+}
+
+/* List */
+.title{
+  grid-area: title
+}
+
+li {
+  list-style: none;
+  /* 
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 60px;
+  grid-template-areas:
+    "h4 h4 h4 h4 h4"
+    "p p p p p edit delete" */
+
+}
+
 
 p {
   font-size: 0.83em;
   grid-area: p;
 }
 
-.input {
-  margin: 15px;
-  width: 300px;
-  font-size: 20px;
-}
-
 .edit,
-.delete {
-  margin: 0 0 0 20px;
-  padding: 3px;
+.delete,
+.add {
+  margin: 10px 0 0 20px;
+  padding: 5px;
   font-size: 16px;
   border-radius: 6px;
   border-color: #EEF0EF;
   background: #fff;
   grid-area: buttons;
+}
+
+.edit {
+  grid-area: edit;
+}
+
+.delete {
+  grid-area: delete;
 }
