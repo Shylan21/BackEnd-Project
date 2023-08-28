@@ -28,11 +28,11 @@ h2 {
 }
 
 .categories {
-    display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: 60px;
-      grid-template-areas:
-        "title genre min rating comment . . "
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 60px;
+  grid-template-areas:
+    "title genre min rating comment . . "
 }
 
 .container {
@@ -60,7 +60,9 @@ h2 {
 }
 
 .rating {
-  grid-area: rating
+  grid-area: rating;
+  margin: 10px;
+  padding: 5px;
 }
 
 .coomment {
@@ -106,6 +108,7 @@ p {
   background: #fff;
   grid-area: buttons;
   max-height: 40px;
+  max-width: 90px;
 }
 
 .edit {

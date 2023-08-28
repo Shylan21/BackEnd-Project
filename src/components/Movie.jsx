@@ -38,6 +38,7 @@ function Movie() {
 			.then((data) => {
 				setMovieList(data.movies)
 			})
+
 	}
 
 	function handleMovieTitleChange(e) {
@@ -239,21 +240,16 @@ function Movie() {
 						<h4 className="title">Title</h4>
 						<h4 className="genre">Genre</h4>
 						<h4 className="min">Runtime</h4>
-						<h4 className="rating">Rating</h4>
+						<h4 className="rating-list">Rating</h4>
 						<h4 className="comment">Comment</h4>
 					</div>
-					<br />
-
+				
 					{movieList.map((movie) => (
 						<div className="container" key={movie.id}>
 							<p className="movieT"> {movie.title}</p>
-
 							<p className="movieG"> {movie.genre}</p>
-
 							<p className="movieM"> {movie.runtimeMins}</p>
-
 							<p className="movieR">{movie.rating}</p>
-
 							<p className="movieC">{movie.comment}</p>
 
 							{/* Buttons */}
