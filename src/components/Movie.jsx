@@ -234,47 +234,38 @@ function Movie() {
 				/>
 				{/* Rendering on screen */}
 				<h2>Your List</h2>
-				<div className="container">
-					
-						{movieList.map((movie) => (
-							<div key={movie.id}>
-								<h4 className="title">Title</h4>
-								<p> {movie.title}</p>
-							
-								<h4 className="genre">Genre</h4>
-								<p> {movie.genre}</p>
+				<div>
+					{movieList.map((movie) => (
+						<div className="container" key={movie.id}>
+							<h4 className="title">Title</h4>
+							<p className="movieT"> {movie.title}</p>
 
-								<h4 className="min">Runtime</h4>
-								<p> {movie.runtimeMins}</p>
+							<h4 className="genre">Genre</h4>
+							<p className="movieG"> {movie.genre}</p>
 
-								<h4 className="rating">Rating</h4>
-								<p>{movie.rating}</p>
+							<h4 className="min">Runtime</h4>
+							<p className="movieM"> {movie.runtimeMins}</p>
 
-								<h4 className="comment">Comment</h4>
-								<p>{movie.comment}</p>
+							<h4 className="rating">Rating</h4>
+							<p className="movieR">{movie.rating}</p>
 
+							<h4 className="comment">Comment</h4>
+							<p className="movieC">{movie.comment}</p>
 
-								{/* Buttons */}
+							{/* Buttons */}
 
-								<button
-									className="edit"
-									onClick={(e) => editMovie(e, movie.id)}
-								>
-									Edit
-								</button>
+							<button className="edit" onClick={(e) => editMovie(e, movie.id)}>
+								Edit
+							</button>
 
 							<button
 								className="delete"
 								onClick={(e) => deleteMovie(e, movie.id)}
 							>
-									Delete
-								</button>
-
-							</div>	 
-						
-						))}
-						
-				
+								Delete
+							</button>
+						</div>
+					))}
 				</div>
 			</div>
 		</>
