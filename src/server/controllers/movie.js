@@ -60,20 +60,30 @@ const editMovie = async (req, res) => {
 		})
 	}
 	try {
-		const editMovie = await prisma.movie.update({
-			data: {
-				movieId,
-				title,
-				genre,
-				runtimeMins,
-				rating,
-				comment,
-			},
-			include: {
-				movie: true,
+		const findMovie = await prisma.movie.findById({
+			where: {
+				id: movieId,
 			},
 		})
-		return res.status(200).json({ movie: editMovie })
+		if (findMovie) {
+			const editMovie = await prisma.movie.update({
+				where: {
+					id: movieId,
+				},
+				data: {
+					movieId,
+					title,
+					genre,
+					runtimeMins,
+					rating,
+					comment,
+				},
+				include: {
+					movie: true,
+				},
+			})
+			return res.status(200).json({ movie: editMovie })
+		}
 	} catch (error) {
 		console.error(error)
 		return res

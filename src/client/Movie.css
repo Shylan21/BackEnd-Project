@@ -27,13 +27,23 @@ h2 {
   padding: 10px;
 }
 
+.categories {
+    display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: 60px;
+      grid-template-areas:
+        "title genre min rating comment . . "
+}
+
 .container {
+  padding-bottom: 10px;
+
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 60px;
   grid-template-areas:
-    "title genre min rating comment . . "
     "movieT movieG movieM movieR movieC edit delete"
+
 }
 
 /* List */
