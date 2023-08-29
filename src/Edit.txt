@@ -1,0 +1,43 @@
+
+								{/* {editingMovieId === movie.id ? (
+									<>
+										<input
+											type="text"
+											value={editedTitle}
+											onChange={(e) => setEditedTitle(e.target.value)}
+										/>
+										<input
+											type="text"
+											value={editedGenre}
+											onChange={(e) => setEditedGenre(e.target.value)}
+										/>
+										<input
+											type="text"
+											value={editedRuntime}
+											onChange={(e) => setEditedRuntime(e.target.value)}
+										/>
+										<input
+											type="text"
+											value={editedRating}
+											onChange={(e) => setEditedRating(e.target.value)}
+										/>
+										<input
+											type="text"
+											value={editedComment}
+											onChange={(e) => setEditedComment(e.target.value)}
+										/>
+										<button
+											className="save"
+											onClick={(e) => saveEditedMovie(e, movie.id)}
+										>
+											Save
+										</button>
+									</>
+								) : (
+									<button
+										className="edit"
+										onClick={() => setEditingMovieId(movie.id)}
+									> 
+								 Edit
+									</button>
+								)} 

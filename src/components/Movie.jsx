@@ -107,7 +107,7 @@ function Movie() {
 			})
 	}
 
-	function editMovie(e, id, updatedMovie) {
+	function SaveEditedMovie(e, id, updatedMovie) {
 		e.preventDefault()
 
 		const option = {
@@ -129,7 +129,7 @@ function Movie() {
 			})
 	}
 
-	// const saveEditedMovie = (e, id) => {
+	// const editedMovie = (e, id) => {
 	// 	e.preventDefault()
 
 	// 	const updatedMovieData = {
@@ -268,7 +268,7 @@ function Movie() {
 
 							{/* Buttons */}
 
-							<button className="edit" onClick={(e) => editMovie(e, movie.id)}>
+							<button className="edit" onClick={(e) => SaveEditedMovie(e, movie.id)}>
 								Edit
 							</button>
 
