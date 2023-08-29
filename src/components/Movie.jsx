@@ -160,6 +160,7 @@ function Movie() {
 			.catch((err) => console.error(err))
 	}
 
+	// Logout
 	function handleLogout(e) {
 		e.preventDefault()
 		localStorage.removeItem('token')
@@ -170,9 +171,9 @@ function Movie() {
 		<>
 			<div className="Movie">
 				{/* Logout */}
-				<p className="logout-link" onClick={handleLogout}>
+				<h5 className="logout-link" onClick={handleLogout}>
 					Logout
-				</p>
+				</h5>
 				<h1>Add new movies</h1>
 				{/* Title */}
 				<label>

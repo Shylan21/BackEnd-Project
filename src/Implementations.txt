@@ -12,6 +12,7 @@ MAIN
   - Can add comments ✅
   - Can edit a movie 
   - Can delete movie ✅
+  - Fix Logout positioning link when page is smaller
 
 
 Extra implementations

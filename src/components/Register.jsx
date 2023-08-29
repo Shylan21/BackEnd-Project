@@ -17,7 +17,6 @@ function Register() {
 	}
 
 	const [registerUser, setRegisterUser] = useState(initialUserInput)
-	// const [loginUser, setLoginUser] = useState(initialUserInput)
 
 	// Registration Functions
 	function handleRegisterChange(e) {

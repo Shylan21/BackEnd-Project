@@ -3,7 +3,6 @@ import '../client/Forms.css'
 
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Register from './Register'
 
 const apiUrl = 'http://localhost:4000'
 
