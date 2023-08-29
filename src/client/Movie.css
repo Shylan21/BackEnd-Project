@@ -5,17 +5,22 @@
 }
 
 /* Head */
-h1,
+h1 {
+  text-align: left;
+  margin: 100px 0 30px 30px;
+}
+
 h2 {
   text-align: left;
   margin: 50px 0 30px 30px;
 }
 
 .input {
-  margin: 15px;
+  margin: 30px 10px 0px;
   width: 300px;
   font-size: 20px;
   padding: 5px;
+
 }
 
 .textarea {
@@ -33,6 +38,7 @@ h2 {
   grid-template-rows: 60px;
   grid-template-areas:
     "title genre min rating comment . . "
+
 }
 
 .container {
@@ -43,20 +49,27 @@ h2 {
   grid-template-rows: 60px;
   grid-template-areas:
     "movieT movieG movieM movieR movieC edit delete"
+}
 
+.logout-link {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  right: -450px;
+  top: 40px;
 }
 
 /* List */
 .title {
-  grid-area: title
+  grid-area: title;
 }
 
 .genre {
-  grid-area: genre
+  grid-area: genre;
 }
 
 .min {
-  grid-area: min
+  grid-area: min;
 }
 
 .rating {
@@ -65,28 +78,17 @@ h2 {
   padding: 5px;
 }
 
-.coomment {
-  grid-area: comment
+.comment {
+  grid-area: comment;
 }
 
-.movieT {
-  grid-area: movieT
-}
-
-.movieG {
-  grid-area: movieG
-}
-
-.movieM {
-  grid-area: movieM
-}
-
-.movieR {
-  grid-area: movieR;
-}
-
+.movieT,
+.movieG,
+.movieM,
+.movieR,
 .movieC {
-  grid-area: movieC;
+  display: grid;
+  place-items: center;
 }
 
 li {
@@ -109,6 +111,27 @@ p {
   grid-area: buttons;
   max-height: 40px;
   max-width: 90px;
+}
+
+/* Grid Area */
+.movieT {
+  grid-area: movieT
+}
+
+.movieG {
+  grid-area: movieG
+}
+
+.movieM {
+  grid-area: movieM
+}
+
+.movieR {
+  grid-area: movieR;
+}
+
+.movieC {
+  grid-area: movieC;
 }
 
 .edit {

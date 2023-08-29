@@ -2,10 +2,13 @@ import '../client/Forms.css'
 import '../client/Movie.css'
 
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const apiUrl = 'http://localhost:4000'
 
 function Movie() {
+	const navigate = useNavigate()
+
 	const initialMovieInput = {
 		title: '',
 		genre: '',
@@ -38,7 +41,6 @@ function Movie() {
 			.then((data) => {
 				setMovieList(data.movies)
 			})
-
 	}
 
 	function handleMovieTitleChange(e) {
@@ -160,7 +162,10 @@ function Movie() {
 	return (
 		<>
 			<div className="Movie">
-				{/* {<a className="logout-link" href="">Logout</a>} */}
+				{/* Logout */}
+				<a className="logout-link" href="login">
+					Logout
+				</a>
 				<h1>Add new movies</h1>
 				{/* Title */}
 				<label>
@@ -225,6 +230,7 @@ function Movie() {
 						onChange={handleMovieCommentChange}
 					/>
 				</label>
+
 				{/* Add Movie */}
 				<input
 					className="add"
@@ -243,7 +249,7 @@ function Movie() {
 						<h4 className="rating-list">Rating</h4>
 						<h4 className="comment">Comment</h4>
 					</div>
-				
+
 					{movieList.map((movie) => (
 						<div className="container" key={movie.id}>
 							<p className="movieT"> {movie.title}</p>

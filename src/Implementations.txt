@@ -3,11 +3,11 @@ MAIN
 - REGISTER/LOGIN
   - Divide Register and Login in different files ✅
       - Add link to change between pages if account exists/not exists
-  - Add possibility to LogOut
+        - Add possibility to LogOut
 
 - MOVIES
   - Open Movie List into another page at the Login ✅
-  - Modify CSS for Movie Form
+  - Modify CSS for Movie Form ✅
   - Can add ratings to movies ✅
   - Can add comments ✅
   - Can edit a movie 
@@ -20,7 +20,7 @@ Extra implementations
   - Alert when email already exists
 
 - GENERAL
-  - Need to clear input after submission 
+  - Need to clear input after submission ✅
 
 - MOVIES
 

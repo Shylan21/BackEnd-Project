@@ -28,7 +28,6 @@ const login = async (req, res) => {
 
 			if (matchPassw) {
 				const token = jwt.sign({ email: email }, secretKey)
-				// res.header('Access-Control-Allow-Origin', '*')
 				res.send({ token })
 			} else res.status(401).send('Invalid email or password')
 		}
