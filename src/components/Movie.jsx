@@ -19,6 +19,7 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
+	const [token, setToken] = useState(null)
 	// const [editingMovieId, setEditingMovieId] = useState(null)
 	// const [editedTitle, setEditedTitle] = useState('')
 	// const [editedGenre, setEditedGenre] = useState('')
@@ -159,13 +160,19 @@ function Movie() {
 			.catch((err) => console.error(err))
 	}
 
+	function handleLogout(e) {
+		e.preventDefault()
+		localStorage.removeItem('token')
+		setToken(null)
+		navigate('/login')
+	}
 	return (
 		<>
 			<div className="Movie">
 				{/* Logout */}
-				<a className="logout-link" href="login">
+				<p className="logout-link" onClick={handleLogout}>
 					Logout
-				</a>
+				</p>
 				<h1>Add new movies</h1>
 				{/* Title */}
 				<label>

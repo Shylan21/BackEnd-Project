@@ -2,7 +2,8 @@ import '../client/App.css'
 import '../client/Forms.css'
 
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Register from './Register'
 
 const apiUrl = 'http://localhost:4000'
 
@@ -73,19 +74,18 @@ function Login() {
 					className="button"
 					type="submit"
 					name="submit"
-					value={'Submit'}
+					value={'Login'}
 					onClick={handleLogin}
 				/>
 			</form>
-			{/* <p>
+			<p>
 				Don't have an account yet?
 				<br />
 				Click here to
-				<a className="link" href="../components/Register">
-					{' '}
-					Register
-				</a>
-			</p> */}
+				<Link className="link" to={'/register'}>
+					{''} Register
+				</Link>
+			</p>
 		</>
 	)
 }
