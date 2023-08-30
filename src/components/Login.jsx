@@ -16,6 +16,7 @@ function Login() {
 	}
 	const [loginUser, setLoginUser] = useState(initialUserInput)
 
+	const isSubmitDisabled = !loginUser.email || !loginUser.password
 	// Login Functions
 	function handleLoginChange(e) {
 		e.preventDefault()
@@ -43,6 +44,7 @@ function Login() {
 				console.error(err)
 			})
 	}
+
 	return (
 		<>
 			<form>
@@ -54,7 +56,7 @@ function Login() {
 						name="email"
 						placeholder="Email"
 						autoComplete="off"
-						value={loginUser.username}
+						value={loginUser.email}
 						onChange={handleLoginChange}
 					/>
 				</label>
@@ -65,7 +67,7 @@ function Login() {
 						name="password"
 						placeholder="Password"
 						autoComplete="off"
-						value={loginUser.username}
+						value={loginUser.password}
 						onChange={handleLoginChange}
 					/>
 				</label>
@@ -75,6 +77,7 @@ function Login() {
 					name="submit"
 					value={'Login'}
 					onClick={handleLogin}
+					disabled={isSubmitDisabled}
 				/>
 			</form>
 			<p>

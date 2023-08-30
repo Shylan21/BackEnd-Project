@@ -17,6 +17,7 @@ function Register() {
 	}
 
 	const [registerUser, setRegisterUser] = useState(initialUserInput)
+	const isSubmitDisabled = !registerUser.email || !registerUser.password
 
 	// Registration Functions
 	function handleRegisterChange(e) {
@@ -77,6 +78,7 @@ function Register() {
 					name="submit"
 					value={'Register'}
 					onClick={handleRegister}
+					disabled={isSubmitDisabled}
 				/>
 			</form>
 			<p>

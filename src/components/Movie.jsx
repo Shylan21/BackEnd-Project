@@ -19,8 +19,11 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
+	const [editedMovie, setEditedMovie] = useState(null)
+
 	const [token, setToken] = useState(null)
-	// const [editingMovieId, setEditingMovieId] = useState(null)
+
+	// const [logoutUser, setLogout] = useState()
 	// const [editedTitle, setEditedTitle] = useState('')
 	// const [editedGenre, setEditedGenre] = useState('')
 	// const [editedRuntime, setEditedRuntime] = useState('')
@@ -107,42 +110,39 @@ function Movie() {
 			})
 	}
 
-	function SaveEditedMovie(e, id, updatedMovie) {
+	// Edit and Save movie
+	function handleEditClick(e, id) {
 		e.preventDefault()
+		// Find the movie with the matching ID from the movieList
+		const movieToEdit = movieList.find((movie) => movie.id === id)
+		// Set the editedMovie state to the found movie data
+		setEditedMovie(movieToEdit)
+	}
+
+	function handleSaveClick(e) {
+		e.preventDefault()
+
+		if (!editedMovie) return
 
 		const option = {
 			methid: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(updatedMovie),
+			body: JSON.stringify(editedMovie),
 		}
 
-		fetch(`${apiUrl}/movie/${id}`, option)
+		fetch(`${apiUrl}/movie/${editedMovie.id}`, option)
 			.then((res) => res.json())
-			.then((editedMovie) => {
-				const updatedMovie = movieList.map((movie) =>
-					movie.id === id ? editedMovie : movie
+			.then((updatedMovie) => {
+				const updatedLIst = movieList.map((movie) =>
+					movie.id === updatedMovie.id ? updatedMovie : movie
 				)
-				setMovieList(updatedMovie)
+				setMovieList(updatedLIst)
+				setEditedMovie(null)
 			})
 			.catch((error) => {
 				console.error('Error editing movie:', error)
 			})
 	}
-
-	// const editedMovie = (e, id) => {
-	// 	e.preventDefault()
-
-	// 	const updatedMovieData = {
-	// 		title: editedTitle,
-	// 		genre: editedGenre,
-	// 		runtimeMins: editedRuntime,
-	// 		rating: editedRating,
-	// 		comment: editedComment,
-	// 	}
-
-	// 	editMovie(e, id, updatedMovieData)
-	// 	setEditingMovieId(null) // Reset editing state
-	// }
 
 	function deleteMovie(e, id) {
 		e.preventDefault()
@@ -163,10 +163,26 @@ function Movie() {
 	// Logout
 	function handleLogout(e) {
 		e.preventDefault()
-		localStorage.removeItem('token')
+		localStorage.removeItem(token)
 		setToken(null)
 		navigate('/login')
+		// e.preventDefault()
+		// fetch(`${apiUrl}/user/login`, {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(logoutUser),
+		// 	headers: { 'Content-Type': 'application/json' },
+		// })
+		// 	.then((response) => response.json())
+		// 	.then((data) => {
+		// 		setLogout({ ...logoutUser, token: data.token })
+		// 		localStorage.removeItem('token', data.token)
+		// 		navigate('/login')
+		// 	})
+		// 	.catch((err) => {
+		// 		console.error(err)
+		// 	})
 	}
+
 	return (
 		<>
 			<div className="Movie">
@@ -268,9 +284,19 @@ function Movie() {
 
 							{/* Buttons */}
 
-							<button className="edit" onClick={(e) => SaveEditedMovie(e, movie.id)}>
-								Edit
-							</button>
+							{/* Conditionally render Edit or Save button */}
+							{editedMovie && editedMovie.id === movie.id ? (
+								<button className="save" onClick={(e) => handleSaveClick(e)}>
+									Save
+								</button>
+							) : (
+								<button
+									className="edit"
+									onClick={(e) => handleEditClick(e, movie.id)}
+								>
+									Edit
+								</button>
+							)}
 
 							<button
 								className="delete"

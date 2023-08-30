@@ -54,9 +54,11 @@ h2 {
 .logout-link {
   color: #fff;
   text-decoration: none;
+
   position: relative;
   right: -600px;
   top: 40px;
+
   cursor: pointer;
 }
 
@@ -100,6 +102,7 @@ p {
   font-size: 0.83em;
 }
 
+/* .save */
 .edit,
 .delete,
 .add {
@@ -110,6 +113,17 @@ p {
   border-color: #EEF0EF;
   background: #fff;
   grid-area: buttons;
+  max-height: 40px;
+  max-width: 90px;
+}
+
+.save {
+  margin: 10px 0 0 20px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 6px;
+  border-color: #EEF0EF;
+  background: #fff;
   max-height: 40px;
   max-width: 90px;
 }
@@ -142,3 +156,7 @@ p {
 .delete {
   grid-area: delete;
 }
+
+/* .save {
+  grid-area: save;
+} */
