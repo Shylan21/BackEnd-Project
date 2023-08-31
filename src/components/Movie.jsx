@@ -165,7 +165,7 @@ function Movie() {
 		e.preventDefault()
 		localStorage.removeItem('token')
 		setToken(null)
-		navigate('/login')
+		navigate('/login') // login needs to check if token === token
 		// e.preventDefault()
 		// fetch(`${apiUrl}/user/login`, {
 		// 	method: 'POST',

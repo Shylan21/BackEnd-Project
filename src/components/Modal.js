@@ -12,11 +12,12 @@ export default function EditPortal() {
 			<button className="button" onClick={() => setShowModal(true)}>
 				Edit
 			</button>
-			{showModal &&
+			{/* {showModal &&
 				createPortal(
 					<ModalContent onClose={() => setShowModal(false)} />,
 					document.body
-				)}
+				)} */}
+			<ModalContent onClose={() => setShowModal(false)} open={showModal} />
 		</>
 	)
 }

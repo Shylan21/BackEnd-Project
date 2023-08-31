@@ -2,9 +2,13 @@ import '../client/style/App.css'
 import '../client/style/Modal.css'
 import '../client/style/Forms.css'
 
-export default function ModalContent({ onClose }) {
+export default function ModalContent({ open, onClose }) {
+	let modalClasses = 'modal'
+	if (open) {
+		modalClasses += ' open'
+	}
 	return (
-		<div className="modal">
+		<div className={modalClasses}>
 			<div className="modal-content">
 				{/* Title */}
 				<input className="input" type="text" name="title" placeholder="Title" />

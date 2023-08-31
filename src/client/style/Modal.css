@@ -1,4 +1,5 @@
-The Modal (background) .modal {
+/* The Modal (background) */
+.modal {
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -17,6 +18,10 @@ The Modal (background) .modal {
   /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
+}
+
+.modal.open {
+  display: block;
 }
 
 /* Modal Content */
