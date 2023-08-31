@@ -102,7 +102,7 @@ function Movie() {
 			.then((response) => response.json())
 			.then((response) => {
 				setMovieList([...movieList, response.movie])
-				console.log('list', movieList)
+				console.log('movie list', movieList)
 				setMovieInput(initialMovieInput)
 			})
 			.catch((err) => {
@@ -282,11 +282,14 @@ function Movie() {
 
 					{movieList.map((movie) => (
 						<div className="container" key={movie.id}>
-							<p className="movieT"> {movie.title}</p>
-							<p className="movieG"> {movie.genre}</p>
-							<p className="movieM"> {movie.runtimeMins}</p>
+							<p className="movieT">{movie.title}</p>
+							<p className="movieG">{movie.genre}</p>
+							<p className="movieM">{movie.runtimeMins}</p>
 							<p className="movieR">{movie.rating}</p>
-							<p className="movieC">{movie.comment}</p>
+							<p className="movieC">
+								{' '}
+								<span>{movie.comment}</span>
+							</p>
 
 							{/* Buttons */}
 

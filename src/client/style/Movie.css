@@ -146,7 +146,52 @@ p {
 
 .movieC {
   grid-area: movieC;
+
+  display: inline-block;
+  margin-top: 15px;
+  width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
 }
+
+/* when not hovering show ellipsis */
+.movieC:not(:hover) {
+  text-overflow: ellipsis;
+}
+
+/* animate on either hover or focus */
+.movieC:hover,
+.movieC:focus {
+  span {
+    display: inline-block;
+    animation-name: scroll-text;
+    animation-duration: 7s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+  }
+}
+
+/* define the animation */
+/* @keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+
+  90% {
+    transform: translateX(-100%);
+  }
+
+  95% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+} */
+
 
 .edit {
   grid-area: edit;

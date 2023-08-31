@@ -10,6 +10,7 @@ MOVIES
   - Modify CSS for Movie Form ✅
   - Can ADD ratings to movies ✅
   - Can ADD comments ✅
+    - Complete animation ❗️
   - Can EDIT a movie ❗️
     - Add Modal Portal ✅
       - PUT request for modal ❗️ 
