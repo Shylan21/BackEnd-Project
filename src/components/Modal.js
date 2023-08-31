@@ -1,5 +1,5 @@
-import '../client/Forms.css'
-import '../client/Movie.css'
+import '../client/style/Forms.css'
+import '../client/style/Movie.css'
 
 import { createPortal } from 'react-dom'
 import ModalContent from './ModalContent.js'

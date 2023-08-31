@@ -18,6 +18,10 @@ MAIN
   - Add Modal Portal
 
 
+Documentation 
+- ERD
+- API
+
 Extra implementations
 - REGISTER/LOGIN
   - Alert when email or passw are incorrect 

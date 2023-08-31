@@ -1,5 +1,6 @@
-import '../client/App.css'
-import '../client/Forms.css'
+import '../client/style/App.css'
+import '../client/style/Movie.css'
+import '../client/style/Forms.css'
 
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'

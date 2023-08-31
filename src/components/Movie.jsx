@@ -1,9 +1,12 @@
-import '../client/Forms.css'
-import '../client/Movie.css'
+import '../client/style/Forms.css'
+import '../client/style/Movie.css'
 
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import EditPortal from './Portal'
+
+// import { createPortal } from 'react-dom'
+import EditPortal from './Modal'
+// import ModalContent from './ModalContent'
 
 const apiUrl = 'http://localhost:4000'
 
@@ -17,6 +20,7 @@ function Movie() {
 		rating: '',
 		comment: '',
 	}
+
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
@@ -25,11 +29,6 @@ function Movie() {
 	const [token, setToken] = useState(null)
 
 	// const [logoutUser, setLogout] = useState()
-	// const [editedTitle, setEditedTitle] = useState('')
-	// const [editedGenre, setEditedGenre] = useState('')
-	// const [editedRuntime, setEditedRuntime] = useState('')
-	// const [editedRating, setEditedRating] = useState('')
-	// const [editedComment, setEditedComment] = useState('')
 
 	useEffect(() => {
 		const movieList = getMovies()
@@ -114,11 +113,11 @@ function Movie() {
 	// Edit and Save movie
 	function handleEditClick(e, id) {
 		e.preventDefault()
+
 		// Find the movie with the matching ID from the movieList
 		const movieToEdit = movieList.find((movie) => movie.id === id)
 		// Set the editedMovie state to the found movie data
 		setEditedMovie(movieToEdit)
-		
 	}
 
 	// function handleSaveClick(e) {
@@ -274,9 +273,11 @@ function Movie() {
 						<h4 className="rating-list">Rating</h4>
 						<h4 className="comment">Comment</h4>
 					</div>
+
 					<div className="clipping-container">
 						<EditPortal />
 					</div>
+
 					{movieList.map((movie) => (
 						<div className="container" key={movie.id}>
 							<p className="movieT"> {movie.title}</p>
@@ -287,16 +288,12 @@ function Movie() {
 
 							{/* Buttons */}
 
-							{/* Conditionally render Edit or Save button */}
-						
-						
-								<button
-									className="edit"
-									onClick={(e) => handleEditClick(e, movie.id)}
-								>
-									Edit
-								</button>
-							
+							<button
+								className="edit"
+								onClick={(e) => handleEditClick(e, movie.id)}
+							>
+								Edit
+							</button>
 
 							<button
 								className="delete"

@@ -1,0 +1,63 @@
+The Modal (background) .modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #797f8f96;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 400px;
+
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 60px;
+  grid-template-areas:
+    ". save . close"; */
+}
+
+/* The Close Button */
+.close-button {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  grid-area: close;
+}
+
+.save-button {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px;
+  grid-area: save;
+}
+
+.close-button:hover,
+.close-button:focus,
+.save-button:hover,
+.save-button: {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
