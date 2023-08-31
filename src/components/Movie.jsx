@@ -24,7 +24,7 @@ function Movie() {
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
 
-	const [editedMovie, setEditedMovie] = useState(null)
+	// const [editedMovie, setEditedMovie] = useState(null)
 
 	const [token, setToken] = useState(null)
 
@@ -111,14 +111,15 @@ function Movie() {
 	}
 
 	// Edit and Save movie
-	function handleEditClick(e, id) {
-		e.preventDefault()
 
-		// Find the movie with the matching ID from the movieList
-		const movieToEdit = movieList.find((movie) => movie.id === id)
-		// Set the editedMovie state to the found movie data
-		setEditedMovie(movieToEdit)
-	}
+	// function handleEditClick(e, id) {
+	// 	e.preventDefault()
+
+	// 	// Find the movie with the matching ID from the movieList
+	// 	const movieToEdit = movieList.find((movie) => movie.id === id)
+	// 	// Set the editedMovie state to the found movie data
+	// 	setEditedMovie(movieToEdit)
+	// }
 
 	// function handleSaveClick(e) {
 	// 	e.preventDefault()
@@ -190,9 +191,9 @@ function Movie() {
 				<h5 className="logout-link" onClick={handleLogout}>
 					Logout
 				</h5>
+
 				<h1>Add new movies</h1>
 				{/* Title */}
-
 				<label>
 					<input
 						className="input"
@@ -264,6 +265,7 @@ function Movie() {
 					value={'Add Movie'}
 					onClick={handleCreateMovie}
 				/>
+
 				{/* Rendering on screen */}
 				<h2>Your List</h2>
 				<div className=" clipping-container">
@@ -290,7 +292,7 @@ function Movie() {
 
 							<button
 								className="edit"
-								onClick={(e) => handleEditClick(e, movie.id)}
+								// onClick={(e) => handleEditClick(e, movie.id)}
 							>
 								Edit
 							</button>

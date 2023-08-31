@@ -1,37 +1,37 @@
 MAIN
 
-- REGISTER/LOGIN
+REGISTER & LOGIN
   - Divide Register and Login in different files ✅
       - Add link to change between pages if account exists/not exists ✅
-        - Add possibility to LogOut ✅ TO DOUBLE CHECK 
+        - Add possibility to Logout ❗️
 
-- MOVIES
+MOVIES
   - Open Movie List into another page at the Login ✅
   - Modify CSS for Movie Form ✅
-  - Can add ratings to movies ✅
-  - Can add comments ✅
-  - Can edit a movie 
-  - Can delete movie ✅
+  - Can ADD ratings to movies ✅
+  - Can ADD comments ✅
+  - Can EDIT a movie ❗️
+    - Add Modal Portal ✅
+      - PUT request for modal ❗️ 
+  - Can DELETE movie ✅
   - Fix Logout positioning link when page is smaller ✅
-  - Wrap comment if too long
-  - On Save, button goes back to Edit ✅
-  - Add Modal Portal
-
+  - Wrap comment if too long ❗️
+  
 
 Documentation 
 - ERD
 - API
 
 Extra implementations
-- REGISTER/LOGIN
+REGISTER & LOGIN
   - Alert when email or passw are incorrect 
   - Alert when email already exists
 
-- GENERAL
+GENERAL
   - Need to clear input after submission ✅
-  - Drop down menu for genre
+  - Drop down menu for genre ❓
 
-- MOVIES
+ MOVIES
 
   - Clicking a movie will Link to another specific page for the selected movie
   # i.e

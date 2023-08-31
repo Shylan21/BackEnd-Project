@@ -1,4 +1,3 @@
-import '../client/style/App.css'
 import '../client/style/Modal.css'
 import '../client/style/Forms.css'
 
@@ -37,7 +36,7 @@ export default function ModalContent({ open, onClose }) {
 					name="comment"
 					placeholder="Write a comment..."
 				/>
-
+				{/* Buttons */}
 				<button
 					className="save-button"
 					// onClick={(e) => handleSaveClick(e)}
