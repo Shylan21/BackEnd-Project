@@ -12,7 +12,10 @@ MAIN
   - Can add comments ✅
   - Can edit a movie 
   - Can delete movie ✅
-  - Fix Logout positioning link when page is smaller
+  - Fix Logout positioning link when page is smaller ✅
+  - Wrap comment if too long
+  - On Save, button goes back to Edit ✅
+  - Add Modal Portal
 
 
 Extra implementations
@@ -22,6 +25,7 @@ Extra implementations
 
 - GENERAL
   - Need to clear input after submission ✅
+  - Drop down menu for genre
 
 - MOVIES
 

@@ -3,6 +3,7 @@ import '../client/Movie.css'
 
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import EditPortal from './Portal'
 
 const apiUrl = 'http://localhost:4000'
 
@@ -117,32 +118,32 @@ function Movie() {
 		const movieToEdit = movieList.find((movie) => movie.id === id)
 		// Set the editedMovie state to the found movie data
 		setEditedMovie(movieToEdit)
+		
 	}
 
-	function handleSaveClick(e) {
-		e.preventDefault()
+	// function handleSaveClick(e) {
+	// 	e.preventDefault()
 
-		if (!editedMovie) return
+	// 	if (!editedMovie) return
 
-		const option = {
-			methid: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(editedMovie),
-		}
+	// 	const option = {
+	// 		methid: 'PUT',
+	// 		headers: { 'Content-Type': 'application/json' },
+	// 	}
 
-		fetch(`${apiUrl}/movie/${editedMovie.id}`, option)
-			.then((res) => res.json())
-			.then((updatedMovie) => {
-				const updatedLIst = movieList.map((movie) =>
-					movie.id === updatedMovie.id ? updatedMovie : movie
-				)
-				setMovieList(updatedLIst)
-				setEditedMovie(null)
-			})
-			.catch((error) => {
-				console.error('Error editing movie:', error)
-			})
-	}
+	// 	fetch(`${apiUrl}/movie/${editedMovie.id}`, option)
+	// 		.then((res) => res.json())
+	// 		.then((updatedMovie) => {
+	// 			const updatedLIst = movieList.map((movie) =>
+	// 				movie.id === updatedMovie.id ? updatedMovie : movie
+	// 			)
+	// 			setMovieList(updatedLIst)
+	// 			setEditedMovie(null)
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error('Error editing movie:', error)
+	// 		})
+	// }
 
 	function deleteMovie(e, id) {
 		e.preventDefault()
@@ -163,7 +164,7 @@ function Movie() {
 	// Logout
 	function handleLogout(e) {
 		e.preventDefault()
-		localStorage.removeItem(token)
+		localStorage.removeItem('token')
 		setToken(null)
 		navigate('/login')
 		// e.preventDefault()
@@ -273,7 +274,9 @@ function Movie() {
 						<h4 className="rating-list">Rating</h4>
 						<h4 className="comment">Comment</h4>
 					</div>
-
+					<div className="clipping-container">
+						<EditPortal />
+					</div>
 					{movieList.map((movie) => (
 						<div className="container" key={movie.id}>
 							<p className="movieT"> {movie.title}</p>
@@ -285,18 +288,15 @@ function Movie() {
 							{/* Buttons */}
 
 							{/* Conditionally render Edit or Save button */}
-							{editedMovie && editedMovie.id === movie.id ? (
-								<button className="save" onClick={(e) => handleSaveClick(e)}>
-									Save
-								</button>
-							) : (
+						
+						
 								<button
 									className="edit"
 									onClick={(e) => handleEditClick(e, movie.id)}
 								>
 									Edit
 								</button>
-							)}
+							
 
 							<button
 								className="delete"
