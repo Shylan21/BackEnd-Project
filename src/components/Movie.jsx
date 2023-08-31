@@ -192,6 +192,7 @@ function Movie() {
 				</h5>
 				<h1>Add new movies</h1>
 				{/* Title */}
+
 				<label>
 					<input
 						className="input"
@@ -265,6 +266,9 @@ function Movie() {
 				/>
 				{/* Rendering on screen */}
 				<h2>Your List</h2>
+				<div className=" clipping-container">
+					<EditPortal />
+				</div>
 				<div className="list">
 					<div className="categories">
 						<h4 className="title">Title</h4>
@@ -272,10 +276,6 @@ function Movie() {
 						<h4 className="min">Runtime</h4>
 						<h4 className="rating-list">Rating</h4>
 						<h4 className="comment">Comment</h4>
-					</div>
-
-					<div className="clipping-container">
-						<EditPortal />
 					</div>
 
 					{movieList.map((movie) => (
