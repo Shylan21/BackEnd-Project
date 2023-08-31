@@ -84,9 +84,9 @@ function Login() {
 			<p>
 				Don't have an account yet?
 				<br />
-				Click here to
+				Click here to {''}
 				<Link className="link" to={'/register'}>
-					{''} Register
+					Register
 				</Link>
 			</p>
 		</>

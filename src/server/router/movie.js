@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.get('', getMovies)
 router.post('', createMovie)
-router.put('', editMovie)
+router.put('/:id', editMovie)
 router.delete('/:id', deleteMovie)
 
 

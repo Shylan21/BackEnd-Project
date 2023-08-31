@@ -4,15 +4,14 @@ import '../client/style/Movie.css'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// import { createPortal } from 'react-dom'
-import EditPortal from './Modal'
-// import ModalContent from './ModalContent'
+import ModalContent from './ModalContent'
 
 const apiUrl = 'http://localhost:4000'
 
 function Movie() {
 	const navigate = useNavigate()
 
+	// Empty Input
 	const initialMovieInput = {
 		title: '',
 		genre: '',
@@ -21,8 +20,11 @@ function Movie() {
 		comment: '',
 	}
 
+	// UseState
 	const [movieList, setMovieList] = useState([])
 	const [movieInput, setMovieInput] = useState(initialMovieInput)
+
+	const [showModal, setShowModal] = useState(null)
 
 	// const [editedMovie, setEditedMovie] = useState(null)
 
@@ -109,41 +111,6 @@ function Movie() {
 				console.error(err)
 			})
 	}
-
-	// Edit and Save movie
-
-	// function handleEditClick(e, id) {
-	// 	e.preventDefault()
-
-	// 	// Find the movie with the matching ID from the movieList
-	// 	const movieToEdit = movieList.find((movie) => movie.id === id)
-	// 	// Set the editedMovie state to the found movie data
-	// 	setEditedMovie(movieToEdit)
-	// }
-
-	// function handleSaveClick(e) {
-	// 	e.preventDefault()
-
-	// 	if (!editedMovie) return
-
-	// 	const option = {
-	// 		methid: 'PUT',
-	// 		headers: { 'Content-Type': 'application/json' },
-	// 	}
-
-	// 	fetch(`${apiUrl}/movie/${editedMovie.id}`, option)
-	// 		.then((res) => res.json())
-	// 		.then((updatedMovie) => {
-	// 			const updatedLIst = movieList.map((movie) =>
-	// 				movie.id === updatedMovie.id ? updatedMovie : movie
-	// 			)
-	// 			setMovieList(updatedLIst)
-	// 			setEditedMovie(null)
-	// 		})
-	// 		.catch((error) => {
-	// 			console.error('Error editing movie:', error)
-	// 		})
-	// }
 
 	function deleteMovie(e, id) {
 		e.preventDefault()
@@ -268,9 +235,7 @@ function Movie() {
 
 				{/* Rendering on screen */}
 				<h2>Your List</h2>
-				<div className=" clipping-container">
-					<EditPortal />
-				</div>
+
 				<div className="list">
 					<div className="categories">
 						<h4 className="title">Title</h4>
@@ -286,19 +251,24 @@ function Movie() {
 							<p className="movieG">{movie.genre}</p>
 							<p className="movieM">{movie.runtimeMins}</p>
 							<p className="movieR">{movie.rating}</p>
-							<p className="movieC">
-								{' '}
+							<div className="movieC">
 								<span>{movie.comment}</span>
-							</p>
+							</div>
 
 							{/* Buttons */}
 
-							<button
-								className="edit"
-								// onClick={(e) => handleEditClick(e, movie.id)}
-							>
+							<button className="edit" onClick={() => setShowModal(movie.id)}>
 								Edit
 							</button>
+
+							<ModalContent
+								onClose={() => {
+									setShowModal(null)
+									getMovies()
+								}}
+								open={showModal}
+								movie={movie}
+							/>
 
 							<button
 								className="delete"

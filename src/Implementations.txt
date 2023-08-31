@@ -11,9 +11,9 @@ MOVIES
   - Can ADD ratings to movies ✅
   - Can ADD comments ✅
     - Complete animation ❗️
-  - Can EDIT a movie ❗️
+  - Can EDIT a movie ✅
     - Add Modal Portal ✅
-      - PUT request for modal ❗️ 
+      - PUT request for modal ✅
   - Can DELETE movie ✅
   - Fix Logout positioning link when page is smaller ✅
   - Wrap comment if too long ❗️
@@ -24,9 +24,11 @@ Documentation
 - API
 
 Extra implementations
+
 REGISTER & LOGIN
   - Alert when email or passw are incorrect 
   - Alert when email already exists
+  - When different people log in, the movie list will be associated to the account
 
 GENERAL
   - Need to clear input after submission ✅

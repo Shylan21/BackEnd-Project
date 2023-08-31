@@ -84,9 +84,9 @@ function Register() {
 			<p>
 				Already registered?
 				<br />
-				Click here to
+				Click here to {''}
 				<Link className="link" to={'/login'}>
-					{''} Login
+					Login
 				</Link>
 			</p>
 		</>

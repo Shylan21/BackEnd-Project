@@ -60,7 +60,7 @@ const editMovie = async (req, res) => {
 		})
 	}
 	try {
-		const findMovie = await prisma.movie.findById({
+		const findMovie = await prisma.movie.findUnique({
 			where: {
 				id: movieId,
 			},
@@ -71,16 +71,16 @@ const editMovie = async (req, res) => {
 					id: movieId,
 				},
 				data: {
-					movieId,
 					title,
 					genre,
 					runtimeMins,
 					rating,
 					comment,
 				},
-				include: {
-					movie: true,
-				},
+				// include: {
+				// 	movie: true,
+				// }, 
+				// To modify connected prisma schema models
 			})
 			return res.status(200).json({ movie: editMovie })
 		}
