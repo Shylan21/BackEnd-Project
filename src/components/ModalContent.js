@@ -7,7 +7,7 @@ const apiUrl = 'http://localhost:4000'
 export default function ModalContent({ open, onClose, movie }) {
 	const [movieInput, setMovieInput] = useState(movie)
 	useEffect(() => {
-		console.log('test', movieInput)
+		console.log('movie input', movieInput)
 	}, [])
 
 	function handleSaveClick(e) {
@@ -75,6 +75,7 @@ export default function ModalContent({ open, onClose, movie }) {
 						name="minutes"
 						placeholder="Minutes"
 						value={movieInput.runtimeMins}
+						// Doesn't work
 						onChange={handleChange}
 					/>
 					<br />
@@ -82,7 +83,7 @@ export default function ModalContent({ open, onClose, movie }) {
 					<select
 						className="rating"
 						name="rating"
-						value={movieInput.rating}
+						value={movieInput.rating} // Doesn't work
 						onChange={handleChange}
 					>
 						<option name="rating">1</option>

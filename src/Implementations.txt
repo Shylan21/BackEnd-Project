@@ -16,8 +16,11 @@ MOVIES
       - PUT request for modal ✅
   - Can DELETE movie ✅
   - Fix Logout positioning link when page is smaller ✅
-  - Wrap comment if too long ❗️
-  
+  - Wrap comment if too long ✅
+
+
+  TO FIX
+  - Edit for runtime and rating not working
 
 Documentation 
 - ERD
